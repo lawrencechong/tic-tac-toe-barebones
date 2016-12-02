@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tic Tac Toe without the pazazz
 
-Things you may want to cover:
+To run this, download the file
 
-* Ruby version
+Check if you have ruby/rails in terminal
+- ruby -v
+- rails -v
 
-* System dependencies
+To Download:
+- install ruby
+- install rails
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run app:
+- Go to Directory of file
+- run in terminal to set up db: rake db migrate
+- run in terminal to start server and app: rails s
+- go to the address, ie: localhost:3000
