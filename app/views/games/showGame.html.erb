@@ -1,0 +1,121 @@
+<% if @win == 1 %>
+Winner is <%= @game.winner %>
+<% else %>
+
+<center> 
+
+<p>Tic Tac Toe Game </p>
+
+<ul>
+<% if @game.a.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/a">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.a==1%> 
+	    <%= 'O' if @game.a==2%> 
+    </button>
+<% end %>
+
+<% if @game.b.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/b">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.b==1%> 
+	    <%= 'O' if @game.b==2%> 
+    </button>
+<% end %>
+
+<% if @game.c.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/c">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.c==1%> 
+	    <%= 'O' if @game.c==2%> 
+    </button>
+<% end %>
+
+</ul>
+
+<ul>
+
+<% if @game.d.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/d">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.d==1%> 
+	    <%= 'O' if @game.d==2%> 
+    </button>
+<% end %>
+
+<% if @game.e.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/e">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.e==1%> 
+	    <%= 'O' if @game.e==2%> 
+    </button>
+<% end %>
+
+<% if @game.f.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/f">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.f==1%> 
+	    <%= 'O' if @game.f==2%> 
+    </button>
+<% end %>
+
+</ul>
+
+<ul>
+
+<% if @game.g.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/g">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.g==1%> 
+	    <%= 'O' if @game.g==2%> 
+    </button>
+<% end %>
+
+<% if @game.h.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/h">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.h==1%> 
+	    <%= 'O' if @game.h==2%> 
+    </button>
+<% end %>
+
+<% if @game.i.nil? %>
+	<a href="/makeMove/<%= @game.id %>/<%= @user %>/i">
+		<button> </button>
+	</a>
+<% else %>
+	<button> 
+	    <%= 'X' if @game.i==1%> 
+	    <%= 'O' if @game.i==2%> 
+    </button>
+<% end %>
+
+</ul>
+
+</center>
+
+<% end %>
