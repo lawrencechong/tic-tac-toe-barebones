@@ -41,13 +41,15 @@ class GamesController < ApplicationController
 		# binding.pry
 		# check if valid move
 		@game = Game.find(params["gameID"])
+		binding.pry
 		if(@game[params["position"]].nil? && @game.currentPlayer == params["playerID"].to_i)
 			@game[params["position"]] = 1 if params["playerID"] == "1"
 			@game[params["position"]] = 2 if params["playerID"] == "2"
+			binding.pry
 			if @game.currentPlayer == 1
 				@game.currentPlayer = 2 
 			else
-				@game.currentPlayer == 1
+				@game.currentPlayer = 1
 			end
 			# binding.pry
 			if @game.checkWin
