@@ -40,27 +40,27 @@ class GamesController < ApplicationController
 	def makeMove
 		# check if valid move
 		@game = Game.find(params["gameID"])
-		if(@game[params["position"]].nil? && @game.currentPlayer == params["playerID"].to_i)
-			@game[params["position"]] = 1 if params["playerID"] == "1"
-			@game[params["position"]] = 2 if params["playerID"] == "2"
-			
-			if @game.checkWin
-				if @game.currentPlayer == 1
-					@game.winner = @game.player1
-				else
-					@game.winner = @game.player2
+		if !@game.checkWin
+			if(@game[params["position"]].nil? && @game.currentPlayer == params["playerID"].to_i)
+				@game[params["position"]] = 1 if params["playerID"] == "1"
+				@game[params["position"]] = 2 if params["playerID"] == "2"
+				
+				if @game.checkWin
+					if @game.currentPlayer == 1
+						@game.winner = @game.player1
+					else
+						@game.winner = @game.player2
+					end
 				end
-			end
 
-			if @game.currentPlayer == 1
-				@game.currentPlayer = 2 
-			else
-				@game.currentPlayer = 1
-			end
-			
+				if @game.currentPlayer == 1
+					@game.currentPlayer = 2 
+				else
+					@game.currentPlayer = 1
+				end
 
-			@game.save
-			# game.checkTie
+				@game.save
+			end
 		end
 		redirect_to "/game/#{@game.id}"
 	end
