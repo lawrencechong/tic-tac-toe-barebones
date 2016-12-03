@@ -1,121 +1,156 @@
-<% if @win == 1 %>
-Winner is <%= @game.winner %>
-<% else %>
 
 <center> 
+	<% if !@game.winner.nil? %>
+		<% if @game.winner == @session %>
+			<div class="mainText"> <p> You won! </p></div>
+		<% elsif @session == @game.player1 or @session == @game.player2%>
+			<div class="mainText"> <p> You loss! </p></div>
+		<% elsif @session != @game.player1 or @session == @game.player2%>
+			<% if @game.winner == @game.player1 %>
+				<div class="mainText"> <p> Player X won the Game </p></div>
+			<% else %>
+				<div class="mainText"> <p> Player Y won the Game </p></div>
+			<% end %>
+		<% end %>
+		<form action="/">
+		    <input class= "button" type="submit" value="Go back" />
+		</form>
+	<% end %>
+	<br>
+	<div class="mainText"> <p>Tic Tac Toe Game </p> </div>
 
-<p>Tic Tac Toe Game </p>
+	<% if @game.winner.nil? %>
+		<div class="sideText">
+			<% if @game.currentPlayer == @user %>	It's your turn, make a move.
+			<% elsif @user == @game.player1 or  @user == @game.player2%> 
+				Waiting for other player
+			<% else %> Waiting on player <%= @game.currentPlayer %>
+			<% end %>
+		</div>
+	<% end %>
 
-<ul>
-<% if @game.a.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/a">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.a==1%> 
-	    <%= 'O' if @game.a==2%> 
-    </button>
-<% end %>
+	<div id="board">
+		<table>
+			<tr>
+				<td class="square">
+					<% if @game.a.nil? and @game.winner.nil? %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/a">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.a==1%> 
+						<%= 'O' if @game.a==2%> 
+					</div>
+					<% end %>
+				</td>
 
-<% if @game.b.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/b">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.b==1%> 
-	    <%= 'O' if @game.b==2%> 
-    </button>
-<% end %>
+				<td class="square">
+					<% if @game.b.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/b">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.b==1%> 
+						<%= 'O' if @game.b==2%> 
+					</div>
+					<% end %>
+				</td>
 
-<% if @game.c.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/c">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.c==1%> 
-	    <%= 'O' if @game.c==2%> 
-    </button>
-<% end %>
+				<td class="square">
+					<% if @game.c.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/c">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.c==1%> 
+						<%= 'O' if @game.c==2%> 
+					</div>
+					<% end %>
+				</td>
+			</tr>
 
-</ul>
+			<tr>
+				<td class="square">
+					<% if @game.d.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/d">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.d==1%> 
+						<%= 'O' if @game.d==2%> 
+					</div>
+					<% end %>
+				</td>
+				<td class="square">
+					<% if @game.e.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/e">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.e==1%> 
+						<%= 'O' if @game.e==2%> 
+					</div>
+					<% end %>
+				</td>
+				<td class="square">
+					<% if @game.f.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/f">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.f==1%> 
+						<%= 'O' if @game.f==2%> 
+					</div>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="square">
+					<% if @game.g.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/g">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.g==1%> 
+						<%= 'O' if @game.g==2%> 
+					</div>
+					<% end %>
+				</td>
+				<td class="square">
+					<% if @game.h.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/h">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.h==1%> 
+						<%= 'O' if @game.h==2%> 
+					</div>
+					<% end %>
+				</td>
+				<td class="square">
+					<% if @game.i.nil? and @game.winner.nil?  %>
+					<a href="/makeMove/<%= @game.id %>/<%= @user %>/i">
+						<button class="squareButton"> </button>
+					</a>
+					<% else %>
+					<div >
+						<%= 'X' if @game.i==1%> 
+						<%= 'O' if @game.i==2%> 
+					</div>
+					<% end %>
+				</td>
+			</tr>
+		</table>
+	</div>
 
-<ul>
-
-<% if @game.d.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/d">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.d==1%> 
-	    <%= 'O' if @game.d==2%> 
-    </button>
-<% end %>
-
-<% if @game.e.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/e">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.e==1%> 
-	    <%= 'O' if @game.e==2%> 
-    </button>
-<% end %>
-
-<% if @game.f.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/f">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.f==1%> 
-	    <%= 'O' if @game.f==2%> 
-    </button>
-<% end %>
-
-</ul>
-
-<ul>
-
-<% if @game.g.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/g">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.g==1%> 
-	    <%= 'O' if @game.g==2%> 
-    </button>
-<% end %>
-
-<% if @game.h.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/h">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.h==1%> 
-	    <%= 'O' if @game.h==2%> 
-    </button>
-<% end %>
-
-<% if @game.i.nil? %>
-	<a href="/makeMove/<%= @game.id %>/<%= @user %>/i">
-		<button> </button>
-	</a>
-<% else %>
-	<button> 
-	    <%= 'X' if @game.i==1%> 
-	    <%= 'O' if @game.i==2%> 
-    </button>
-<% end %>
-
-</ul>
 
 </center>
 
-<% end %>

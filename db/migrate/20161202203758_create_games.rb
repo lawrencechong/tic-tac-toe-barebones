@@ -11,7 +11,10 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.integer :h
       t.integer :i
       t.integer :state
-      t.integer :winner
+      t.string :winner
+      t.string :player1
+      t.string :player2
+      t.integer :currentPlayer
 
       t.timestamps
     end

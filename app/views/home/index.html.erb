@@ -1,6 +1,29 @@
-Tic Tac Toe
+<div class="game">
+<center>
+<div class="mainText"> Tic Tac Toe </div>
 
 
 <form action="/newGame">
-    <input id= "button" type="submit" value="New Game!" />
+    <input class= "button" type="submit" value="New Game!" />
 </form>
+
+<div class="mainText"> Join/Watch a game </div>
+<%= form_tag("/search", method: "get") do %>
+  
+  <%= text_field_tag "search", 
+  	nil, 
+  	:placeholder => "Game Number",
+  	:class => "SearchText"
+  	%>
+
+  <%= submit_tag("Go to Game", :class=>"buttonSearch") %>
+<% end %>
+
+<div class="statsText">
+Wins = <%= @wins %> <br>
+losses = <%= @losses %>
+</div>
+
+</center>
+</div>
+
