@@ -16,8 +16,6 @@ class GamesController < ApplicationController
 		if !@game.checkWin
 			@win = 0
 			@user = 0
-			# if session.nil?
-			# binding.pry
 				session = request.session_options[:id]
 				if @game.player1.nil?
 					@game.player1 = session
@@ -30,15 +28,12 @@ class GamesController < ApplicationController
 				elsif session == @game.player2
 					@user = 2
 				end
-			# end
 			@game.save
 
 		end
-		# binding.pry
 	end
 
 	def makeMove
-		# binding.pry
 		# check if valid move
 		@game = Game.find(params["gameID"])
 		if(@game[params["position"]].nil? && @game.currentPlayer == params["playerID"].to_i)
@@ -49,7 +44,6 @@ class GamesController < ApplicationController
 			else
 				@game.currentPlayer = 1
 			end
-			# binding.pry
 			if @game.checkWin
 				@game.winner = @game.currentPlayer
 			end
