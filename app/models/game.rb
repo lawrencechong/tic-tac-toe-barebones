@@ -27,6 +27,62 @@ class Game < ApplicationRecord
 	end
 
 	def checkTie
-		false
+		if !self.checkWin
+			arr = (a=*(0..8))
+			arr.each{|index|
+				return false if getSquare(index).nil?
+			}
+		end
+		true
+	end
+
+	def computerMakeMove
+		if self.winner.nil?
+			index = self.findEmptyRandomSquareIndex
+			self.updateSquare(index, 2)
+			self.winner = self.player2 if self.checkWin
+			self.currentPlayer = 1
+			self.save
+		end
+	end
+
+	def findEmptyRandomSquareIndex
+		arr = (a=*(0..8)).shuffle
+		index = -1
+		arr.each{|index|
+			if getSquare(index).nil?
+				return index 
+			end 
+		}
+		index
+	end
+
+	def getSquare(index)
+		case index
+			when 0 then self.a
+			when 1 then self.b
+			when 2 then self.c
+			when 3 then self.d
+			when 4 then self.e
+			when 5 then self.f
+			when 6 then self.g
+			when 7 then self.h
+			when 8 then self.i
+		end	
+	end
+
+	def updateSquare(index, move)
+		case index
+			when 0 then self.a = move
+			when 1 then self.b = move
+			when 2 then self.c = move
+			when 3 then self.d = move
+			when 4 then self.e = move
+			when 5 then self.f = move
+			when 6 then self.g = move
+			when 7 then self.h = move
+			when 8 then self.i = move
+		end
+		self.save	
 	end
 end

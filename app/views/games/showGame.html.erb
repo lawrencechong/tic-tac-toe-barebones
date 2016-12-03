@@ -1,6 +1,8 @@
-<% if @game.currentPlayer != @user %>
+<% if @game.currentPlayer != @user and @game.winner.nil?%>
 	<meta http-equiv="refresh" content="3">
 <% end %>
+
+<% puts @game.currentPlayer %>
 <center> 
 	<% if !@game.winner.nil? %>
 		<% if @game.winner == @session %>
@@ -17,11 +19,22 @@
 		<form action="/">
 		    <input class= "button" type="submit" value="Go back" />
 		</form>
+	<% elsif @game.checkTie %>
+		<div class="mainText"> <p> Tied Game! </p></div>
+		<form action="/">
+		    <input class= "button" type="submit" value="Go back" />
+		</form>
 	<% end %>
 	<br>
 	<div class="mainText"> <p>Tic Tac Toe Game </p> </div>
 
-	<% if @game.winner.nil? %>
+	<% if @game.player2.nil? %>
+		<form action="/playComputer/<%= @game.id %>">
+		    <input class= "button" type="submit" value="Play Computer!" />
+		</form>
+	<% end %>
+
+	<% if @game.winner.nil? and !@game.checkTie %>
 		<div class="sideText">
 			<% if @game.currentPlayer == @user %>	It's your turn, make a move.
 			<% elsif @user == @game.player1 or  @user == @game.player2%> 
