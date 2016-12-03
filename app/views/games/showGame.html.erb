@@ -1,4 +1,6 @@
-
+<% if @game.currentPlayer != @user %>
+	<meta http-equiv="refresh" content="3">
+<% end %>
 <center> 
 	<% if !@game.winner.nil? %>
 		<% if @game.winner == @session %>
